@@ -3,6 +3,8 @@ import { Product } from 'src/app/Models/Product';
 import { ProductService } from 'src/app/Services/product.service';
 import { Store } from '@ngrx/store';
 import { AddToCart, RemoveFromCart } from 'src/app/store/actions';
+import { Router } from '@angular/router';
+import { ToastrService, Toast } from 'ngx-toastr';
 
 @Component({
   selector: 'app-production-list',
@@ -12,9 +14,10 @@ import { AddToCart, RemoveFromCart } from 'src/app/store/actions';
 export class ProductionListComponent implements OnInit 
 {
   products:Product[];
-  //inCart = false;
 
   constructor(  private proSer  : ProductService,
+                private router  : Router,
+                private toastr  : ToastrService,
                 private store   : Store<{ items: []; cart: [] }>) 
   { }
 
@@ -30,12 +33,18 @@ export class ProductionListComponent implements OnInit
   addToCart(item: Product) 
   {
     this.store.dispatch(new AddToCart(item));
-    //this.inCart = true;
+    this.showSuccess();
   }
 
   removeFromCart(item: Product) 
   {
     this.store.dispatch(new RemoveFromCart(item));
-    //this.inCart = false;
+  }
+  openDetail(item: Product)
+  {
+    this.router.navigate(['/production/detail/'+item.id]);
+  }
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
   }
 }

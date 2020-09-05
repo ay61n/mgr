@@ -17,6 +17,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ShopReducer } from './store/reducer';
 import { ShopEffects } from './store/effects';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ShopEffects } from './store/effects';
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot({ shop: ShopReducer }),
-    EffectsModule.forRoot([ShopEffects])
+    EffectsModule.forRoot([ShopEffects]),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

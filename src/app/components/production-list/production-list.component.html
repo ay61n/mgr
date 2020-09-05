@@ -1,32 +1,36 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-4" 
-            *ngFor="let product of products">
-            <img 
-                height="200" 
-                width="250" 
-                src="/assets/product/{{product.picture}}" 
-                alt="{{product.name|uppercase}}">
-            <div class="card-body">
-                <h4>{{product.name|uppercase}}</h4>
-                <h2>{{product.cost}} TL</h2> 
-                <p class="card-text">{{product.description|link}}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                        <a [routerLink]="['/production','detail',product.id]"
-                            class="btn btn-sm btn-outline-secondary">Detaylı Bilgi
-                        </a>
-                        <button
-                            class="btn btn-sm btn-outline-secondary"
-                            (click)="addToCart(product)">
-                            <i class="fa fa-plus"></i>
-                            Sepete Ekle
-                        </button>
-                       
+            <div class="col-md-auto" 
+                *ngFor="let product of products">
+                <img 
+                    height="200" 
+                    width="250" 
+                    src="/assets/product/{{product.picture}}" 
+                    alt="{{product.name|uppercase}}">
+                <div class="card-body">
+                    <h4>{{product.name|uppercase}}</h4>
+                    <p class="card-text">{{product.description|link}}</p>
+                    <h2 class="alignright">{{product.cost}} TL</h2> 
+                    <br style="clear:both;" />
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button
+                                class="btn btn-sm btn-outline-secondary"
+                                (click)="openDetail(product)">
+                                <i class="fa fa-edit"></i>
+                                Detaylar
+                            </button>
+                            <button
+                                class="btn btn-sm btn-outline-secondary"
+                                (click)="addToCart(product)">
+                                <i class="fa fa-plus"></i>
+                                Sepete Ekle
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <br>
     </div>
 </div>
 
