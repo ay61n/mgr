@@ -1,0 +1,17 @@
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>Ürün Detayı</h1>
+        <img 
+                height="200" 
+                width="250" 
+                src="/assets/product/{{detail.picture}}" 
+                alt="{{detail.name|uppercase}}">
+        <p class="lead text-muted">{{detail.detail}}
+        </p>
+        <hr>
+        <div *ngIf="say!=0">
+        <h1>Yorumlar ( {{say}} )</h1>
+        <app-production-comment [comments]="comments" (yorumSay)='displayCounter($event)'></app-production-comment>
+        </div>
+    </div>
+</section>

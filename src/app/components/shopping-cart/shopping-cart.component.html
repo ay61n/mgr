@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" 
+            *ngFor="let product of shoppingCart">
+            <img 
+                height="200" 
+                width="250" 
+                src="/assets/product/{{product.picture}}" 
+                alt="{{product.name|uppercase}}">
+            <div class="card-body">
+                <h4>{{product.name|uppercase}}</h4>
+                <p class="card-text">{{product.description|link}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a [routerLink]="['/production','detail',product.id]"
+                            class="btn btn-sm btn-outline-secondary">Detaylı Bilgi
+                        </a>
+                        <button
+                            class="btn btn-sm btn-outline-secondary"
+                            (click)="addToCart(product)">
+                            <i class="fa fa-plus"></i>
+                            Sepete Ekle
+                        </button>
+                        <button
+                            class="btn btn-sm btn-outline-secondary"
+                            (click)="removeFromCart(product)">
+                            <i class="fa fa-plus"></i>
+                            Sepetten cıkar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            {{totalCost}}
+        </div>
+
+    </div>
+</div>
+
