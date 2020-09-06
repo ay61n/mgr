@@ -30,7 +30,8 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"]
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -60,6 +61,22 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "test": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.test.ts"
+                }
+              ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
             }
           }
         },
@@ -70,7 +87,16 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "migros:build:production"
+              "browserTarget": "migros:build:production",
+              "port":4201
+            },
+            "dev": {
+              "browserTarget": "migros:build:dev",
+              "port":4202
+            },
+            "test": {
+              "browserTarget": "migros:build:test",
+              "port":4203
             }
           }
         },
@@ -128,6 +154,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "migros"
 }

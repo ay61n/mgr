@@ -66,7 +66,8 @@ export function ShopReducer(state = initialState, action: ActionsUnion) {
                 totalCost:[newTotalR],
                 totalDifItem:[newTotalDifItemR]
         }
-      };
+      }
+      else return state;
     
     case ActionTypes.RemoveAll:
         return {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Product } from 'src/app/Models/Product';
 
@@ -9,9 +9,10 @@ import { Product } from 'src/app/Models/Product';
 })
 export class HeaderComponent implements OnInit 
 {
+  @Input()  env ;
   cart: Product[] = [];
-  totalDifItem;
-  totalCost;
+  totalDifItem:number;
+  totalCost:number;
   constructor(private store: Store<{ items: Product[]; cart: []; totalDifCount:number; totalCost:number  }>) 
   {
     store.pipe(select('shoppingCart')).subscribe(data => (this.cart = data.cart,this.totalDifItem = data.totalDifItem,this.totalCost = data.totalCost )); 

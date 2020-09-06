@@ -1,16 +1,11 @@
 <header id="header">
-    <div class="logo"><a routerLink="/">MİGROS</a></div>
+    <div class="logo"><a routerLink="/">MİGROS - {{env.evnName}}</a></div>
 
     <div class="card-header">
         <a [routerLink]="['/shoppingcart']"
             class="btn btn-sm btn-outline-secondary">
-            <span *ngIf="cart.length > 0 else hide" class="badge">Sepetinizde {{ totalDifItem }} çeşit ürün vardır Toplam Tutar: {{ totalCost }} TL</span> 
+            <span *ngIf="cart.length > 0 else hide" class="badge">Sepetinizde {{ totalDifItem }} çeşit ürün vardır Toplam Tutar: {{ totalCost}} TL</span> 
             <ng-template #hide class="badge">Sepetiniz Boş</ng-template> 
         </a>
     </div>
-
-    
-        <!-- <button class="btn btn-complete" (click)="getList()">
-            <i class="fa fa-refresh"></i>Sepet
-        </button> -->
 </header>

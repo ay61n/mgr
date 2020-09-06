@@ -15,6 +15,22 @@ export class ProductionListComponent implements OnInit
 {
   products:Product[];
 
+   options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-bottom-right",
+    "preventDuplicates": false,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+    }
+  
+
   constructor(  private proSer  : ProductService,
                 private router  : Router,
                 private toastr  : ToastrService,
@@ -45,6 +61,6 @@ export class ProductionListComponent implements OnInit
     this.router.navigate(['/production/detail/'+item.id]);
   }
   alertAdd(item:Product) {
-    this.toastr.success('Sepete Eklendi', item.name);
+    this.toastr.success('Sepete Eklendi', item.name,this.options);
   }
 }

@@ -1,0 +1,4 @@
+docker build -t my-angular-app:v1 .
+docker images
+docker tag 9e7d7d791397 ay61n/mgr:V1
+push ay61n/mgr:V1
