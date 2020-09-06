@@ -11,9 +11,10 @@ export class HeaderComponent implements OnInit
 {
   cart: Product[] = [];
   totalDifItem;
-  constructor(private store: Store<{ items: Product[]; cart: []; totalDifCount:number }>) 
+  totalCost;
+  constructor(private store: Store<{ items: Product[]; cart: []; totalDifCount:number; totalCost:number  }>) 
   {
-    store.pipe(select('shop')).subscribe(data => (this.cart = data.cart,this.totalDifItem = data.totalDifItem)); 
+    store.pipe(select('shoppingCart')).subscribe(data => (this.cart = data.cart,this.totalDifItem = data.totalDifItem,this.totalCost = data.totalCost )); 
   }
   ngOnInit() 
   {

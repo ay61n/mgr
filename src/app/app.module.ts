@@ -16,7 +16,6 @@ import { ProductionCommentComponent } from './components/production-list/product
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { ShopReducer } from './store/reducer';
-import { ShopEffects } from './store/effects';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -37,8 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot({ shop: ShopReducer }),
-    EffectsModule.forRoot([ShopEffects]),
+    StoreModule.forRoot({ shoppingCart: ShopReducer }),
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
   ],

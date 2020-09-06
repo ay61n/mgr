@@ -1,3 +1,8 @@
-.container {
+.container 
+{
     margin : 10vh;
- }
+}
+.alignright 
+{
+    float: right;
+}

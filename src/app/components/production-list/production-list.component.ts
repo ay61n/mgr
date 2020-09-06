@@ -33,7 +33,7 @@ export class ProductionListComponent implements OnInit
   addToCart(item: Product) 
   {
     this.store.dispatch(new AddToCart(item));
-    this.showSuccess();
+    this.alertAdd(item);
   }
 
   removeFromCart(item: Product) 
@@ -44,7 +44,7 @@ export class ProductionListComponent implements OnInit
   {
     this.router.navigate(['/production/detail/'+item.id]);
   }
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
+  alertAdd(item:Product) {
+    this.toastr.success('Sepete Eklendi', item.name);
   }
 }

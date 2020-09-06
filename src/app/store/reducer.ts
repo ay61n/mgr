@@ -1,6 +1,4 @@
 import { ActionsUnion, ActionTypes } from './actions';
-import { isNgTemplate } from '@angular/compiler';
-import { Product } from '../Models/Product';
 
 export const initialState = {
   items: [],
@@ -38,28 +36,45 @@ export function ShopReducer(state = initialState, action: ActionsUnion) {
         totalCost:[newTotal],
         totalDifItem:[newTotalDifItem]
       };
+    case ActionTypes.RemoveItem:
+      const newSubtotalRI    = action.payload.cost;
+      const listRI           = state.cart.filter(item => item.id == action.payload.id)
+      const newTotalRI       = state.totalCost - newSubtotalRI*listRI.length;
+
+      let   newTotalDifItemRI:number;
+      
+        newTotalDifItemRI = state.totalDifItem-1;
+        return {
+          ...state,
+          cart: [...state.cart.filter(item => item.id != action.payload.id)],
+                totalCost:[newTotalRI],
+                totalDifItem:[newTotalDifItemRI]
+        };
 
     case ActionTypes.Remove:
       const newSubtotalR     = action.payload.cost;
       const newTotalR        = state.totalCost - newSubtotalR;
-      const list             = state.cart.filter(item => item.id == action.payload.id)
+      const listR            = state.cart.filter(item => item.id == action.payload.id)
       let   newTotalDifItemR:number;
-      if(list.length==1)
-      {
-        newTotalDifItemR = state.totalDifItem-1;
-      }
-      else
+      if(listR.length!=1)
       {
         newTotalDifItemR = state.totalDifItem;
-      }
-      return {
-        ...state,
-        cart: [...state.cart.slice(0, state.cart.findIndex(item => item.id == action.payload.id))
-              ,...state.cart.slice(   state.cart.findIndex(item => item.id == action.payload.id) + 1)],
-              totalCost:[newTotalR],
-              totalDifItem:[newTotalDifItemR]
+        return {
+          ...state,
+          cart: [...state.cart.slice(0, state.cart.findIndex(item => item.id == action.payload.id))
+                ,...state.cart.slice(   state.cart.findIndex(item => item.id == action.payload.id) + 1)],
+                totalCost:[newTotalR],
+                totalDifItem:[newTotalDifItemR]
+        }
       };
-
+    
+    case ActionTypes.RemoveAll:
+        return {
+          ...state,
+          cart: [],
+                totalCost:[0],
+                totalDifItem:[0]
+        };
     default:
       return state;
   }

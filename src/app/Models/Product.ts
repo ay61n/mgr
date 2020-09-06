@@ -6,4 +6,6 @@ export class Product
     picture     :string;
     detail      :string;
     cost        :number;
+    count       :number;
+    subTotal    :number;
 }
